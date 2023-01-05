@@ -28,45 +28,47 @@ def calculaDV(x):
 
     return dv1, dv2
 
+def imprime_cpf(cpf_numeros, cpf_dv, veracidade):
+    full_cpf = ''
 
-entrada = input('Digite o CPF: ')
+    for i in range(len(cpf_numeros)-1):
+        if i == 3 or i == 6:
+            full_cpf += '.'
+            full_cpf += str(cpf_numeros[i])
+        else:
+            full_cpf += str(cpf_numeros[i])
 
-cpfFirsts = []
-cpfDV = []
+    if veracidade == True:
+        print(f'O CPF {full_cpf}-{cpf_dv[0]}{cpf_dv[1]} é valido!')
+    else:
+        print(f'O CPF: {full_cpf}-{cpf_dv[0]}{cpf_dv[1]} não é valido!')
+        
+    return None
 
-for k in range(len(entrada)):
-    if k < 9:
-        cpfFirsts.append(int(entrada[k]))
-    if k > 8:
-        cpfDV.append(int(entrada[k]))
+def verifica_cpf():
+    entrada = input('Digite o CPF: ')
 
-if len(cpfFirsts)+len(cpfDV) > 11 or len(cpfFirsts)+len(cpfDV) < 11:
-    print('CPF inválido: O CPF deve ter 11 dígitos!')
-else:
-    dig1, dig2 = calculaDV(cpfFirsts)
+    cpfFirsts = []
+    cpfDV = []
 
-if cpfDV[0] == dig1 and cpfDV[1] == dig2:
-    print('O CPF {}{}{}.{}{}{}.{}{}{}-{}{} é válido!'.format(cpfFirsts[0],
-                                                           cpfFirsts[1],
-                                                           cpfFirsts[2],
-                                                           cpfFirsts[3],
-                                                           cpfFirsts[4],
-                                                           cpfFirsts[5],
-                                                           cpfFirsts[6],
-                                                           cpfFirsts[7],
-                                                           cpfFirsts[8],
-                                                           cpfDV[0],
-                                                           cpfDV[1]))
-else:
-    print('O CPF {}{}{}.{}{}{}.{}{}{}-{}{} não é válido!'.format(cpfFirsts[0],
-                                                                 cpfFirsts[1],
-                                                                 cpfFirsts[2],
-                                                                 cpfFirsts[3],
-                                                                 cpfFirsts[4],
-                                                                 cpfFirsts[5],
-                                                                 cpfFirsts[6],
-                                                                 cpfFirsts[7],
-                                                                 cpfFirsts[8],
-                                                                 cpfDV[0],
-                                                                 cpfDV[1])
-          )
+    for k in range(len(entrada)):
+        if k < 9:
+            cpfFirsts.append(int(entrada[k]))
+        if k > 8:
+            cpfDV.append(int(entrada[k]))
+
+    if len(cpfFirsts)+len(cpfDV) > 11 or len(cpfFirsts)+len(cpfDV) < 11:
+        print('CPF inválido: O CPF deve ter 11 dígitos!')
+    else:
+        dig1, dig2 = calculaDV(cpfFirsts)
+
+    if cpfDV[0] == dig1 and cpfDV[1] == dig2:
+        is_valido = True
+        imprime_cpf(cpfFirsts, cpfDV, is_valido)
+
+
+    else:
+        is_valido = False
+        imprime_cpf(cpfFirsts, cpfDV, is_valido)
+
+verifica_cpf()

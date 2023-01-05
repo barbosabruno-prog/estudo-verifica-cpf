@@ -1,6 +1,6 @@
 # PROGRAMA PARA VERIFICAR CPF VÁLIDO
 
-def calculaDV(x):
+def calcula_dv(x):
     smt1 = 0
     cont = 10
     for i in range(len(x)):
@@ -48,27 +48,27 @@ def imprime_cpf(cpf_numeros, cpf_dv, veracidade):
 def verifica_cpf():
     entrada = input('Digite o CPF: ')
 
-    cpfFirsts = []
+    cpf_corpo = []
     cpfDV = []
 
     for k in range(len(entrada)):
         if k < 9:
-            cpfFirsts.append(int(entrada[k]))
+            cpf_corpo.append(int(entrada[k]))
         if k > 8:
             cpfDV.append(int(entrada[k]))
 
-    if len(cpfFirsts)+len(cpfDV) > 11 or len(cpfFirsts)+len(cpfDV) < 11:
+    if len(cpf_corpo)+len(cpfDV) > 11 or len(cpf_corpo)+len(cpfDV) < 11:
         print('CPF inválido: O CPF deve ter 11 dígitos!')
     else:
-        dig1, dig2 = calculaDV(cpfFirsts)
+        dig1, dig2 = calcula_dv(cpf_corpo)
 
     if cpfDV[0] == dig1 and cpfDV[1] == dig2:
         is_valido = True
-        imprime_cpf(cpfFirsts, cpfDV, is_valido)
+        imprime_cpf(cpf_corpo, cpfDV, is_valido)
 
 
     else:
         is_valido = False
-        imprime_cpf(cpfFirsts, cpfDV, is_valido)
+        imprime_cpf(cpf_corpo, cpfDV, is_valido)
 
 verifica_cpf()

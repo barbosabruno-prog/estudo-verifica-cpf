@@ -2,5 +2,5 @@ projectKey=sonar-verifica-cpf-2
 serverUrl=http://localhost:9000
 serverVersion=9.8.0.63668
 dashboardUrl=http://localhost:9000/dashboard?id=sonar-verifica-cpf-2
-ceTaskId=AYWDz0COjEV5mUc4_ELM
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYWDz0COjEV5mUc4_ELM
+ceTaskId=AYWD0cWVjEV5mUc4_ELN
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYWD0cWVjEV5mUc4_ELN
